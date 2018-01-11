@@ -1,18 +1,24 @@
 package ru.kotovalexandrfrombutovo.destrictpassenger.common.DTO;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Class to define route.
  * Alexandr Kotov 29.11.2017
  */
-public class RouteDTO implements Serializable {
+public class RouteDTO {
 
+    @JsonProperty("id")
     private Long id;
+    @JsonProperty("userUuid")
     private String userUuid;
+    @JsonProperty("fromRoute")
     private String fromRoute;
+    @JsonProperty("toRoute")
     private String toRoute;
+    @JsonProperty("startDate")
     private String startDate;
+    @JsonProperty("isActive")
     private Boolean isActive;
 
     public RouteDTO() {
@@ -65,4 +71,5 @@ public class RouteDTO implements Serializable {
     public void setActive(Boolean active) {
         isActive = active;
     }
+
 }

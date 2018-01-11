@@ -8,7 +8,9 @@ import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.repositor
 import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.transformers.RouteTransformer;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by alexkotov on 29.11.17.
@@ -25,22 +27,22 @@ public class RoutePersistenceServiceImpl implements IRoutePersistenceService {
         transformer = Mappers.getMapper(RouteTransformer.class);
     }
 
-    public void saveRoute(RouteDTO routeDTO) {
-        repository.save(transformer.routeDtoToEntity(routeDTO));
+    public RouteDTO saveRoute(RouteDTO routeDTO) {
+        return transformer.routeEntityToDto(repository.save(transformer.routeDtoToEntity(routeDTO)));
     }
 
     public void deleteRoute(RouteDTO routeDTO) {
         repository.delete(routeDTO.getId());
     }
 
-    public List<RouteDTO> getListRouteByUserUuid(String userUuid) {
-        List<RouteDTO> result = new ArrayList<>();
+    public Set<RouteDTO> getListRouteByUserUuid(String userUuid) {
+        Set<RouteDTO> result = new HashSet<>();
         repository.getRouteByUser(userUuid).forEach(route -> result.add(transformer.routeEntityToDto(route)));
         return result;
     }
 
-    public List<RouteDTO> getListActiveRoute() {
-        List<RouteDTO> result = new ArrayList<>();
+    public Set<RouteDTO> getListActiveRoute() {
+        Set<RouteDTO> result = new HashSet<>();
         repository.getActiveRoutes().forEach(route -> result.add(transformer.routeEntityToDto(route)));
         return result;
     }
