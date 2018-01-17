@@ -22,6 +22,7 @@ public class RouteEntity implements Serializable {
     private String toRoute;
     private String startDate;
     private Boolean isActive;
+    private Boolean isDriver;
 
     public RouteEntity() {
     }
@@ -68,6 +69,14 @@ public class RouteEntity implements Serializable {
 
     public Long getId() {
         return id;
+    }
+
+    public Boolean getDriver() {
+        return isDriver;
+    }
+
+    public void setDriver(Boolean driver) {
+        isDriver = driver;
     }
 
     public void setId(Long id) {

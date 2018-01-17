@@ -1,0 +1,107 @@
+swagger: '2.0'
+
+info:
+  title: DestrictPassengers API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '1.0'
+
+host: localhost:8080
+basePath: /v1
+schemes:
+  - http
+
+consumes:
+  - application/json
+produces:
+  - application/json
+tags:
+  - name: DestrictPassengers
+
+paths:
+  /routes/add:
+    post:
+      tags:
+        - DestrictPassengers
+      description: Allows add new route.
+      operationId: addRoute
+      parameters:
+        - in: body
+          name: RouteDTO
+          description: A new Route-object containing all specific information.
+          required: true
+          schema:
+            $ref: '#/definitions/RouteDTO'
+      responses:
+        '201':
+          description: A new Route was successfully created.
+          schema:
+            $ref: '#/definitions/RouteDTO'
+        default:
+          description: Unexpected error.
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /routes:
+    get:
+      tags:
+        - DestrictPassengers
+      description: This operation allows one to get back information about certain user providing his UUID as a path parameter.
+      operationId: getAllRoutes
+      responses:
+        '200':
+          description: This routes was found.
+          schema:
+            $ref: '#/definitions/RouteDTO'
+        default:
+          description: Unexpected error.
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+definitions:
+
+  RouteDTO:
+    description: Describes route.
+    type: object
+    properties:
+      id:
+        type: integer
+        description: id.
+      userUuid:
+        type: string
+        description: user`s uuid.
+      fromRoute:
+        type: string
+        description: From.
+      toRoute:
+        type: string
+        description: To.
+      startDate:
+        type: string
+        description: start date.
+      isActide:
+        type: boolean
+        description: is this route active?.
+    required:
+      - userUuid
+      - fromRoute
+      - toRoute
+      - startDate
+      - isActide
+
+  ErrorModel:
+    description: Information about error.
+    type: object
+    properties:
+      code:
+        description: Contains error code massage.
+        type: integer
+        format: int32
+      message:
+        description: Contains short error message.
+        type: string
+    required:
+      - code
+      - message

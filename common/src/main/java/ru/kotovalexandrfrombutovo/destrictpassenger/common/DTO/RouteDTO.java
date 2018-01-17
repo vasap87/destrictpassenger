@@ -20,6 +20,16 @@ public class RouteDTO {
     private String startDate;
     @JsonProperty("isActive")
     private Boolean isActive;
+    @JsonProperty("isDriver")
+    private Boolean isDriver;
+
+    public Boolean getDriver() {
+        return isDriver;
+    }
+
+    public void setDriver(Boolean driver) {
+        isDriver = driver;
+    }
 
     public RouteDTO() {
     }
