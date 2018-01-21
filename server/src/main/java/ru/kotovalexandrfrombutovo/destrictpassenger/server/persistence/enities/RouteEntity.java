@@ -20,7 +20,7 @@ public class RouteEntity implements Serializable {
     private String userUuid;
     private String fromRoute;
     private String toRoute;
-    private String startDate;
+    private Long startDateTime;
     private Boolean isActive;
     private Boolean isDriver;
 
@@ -51,12 +51,12 @@ public class RouteEntity implements Serializable {
         this.toRoute = toRoute;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public Long getStartDateTime() {
+        return startDateTime;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStartDateTime(Long startDateTime) {
+        this.startDateTime = startDateTime;
     }
 
     public Boolean getActive() {

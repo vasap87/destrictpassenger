@@ -16,8 +16,8 @@ public class RouteDTO {
     private String fromRoute;
     @JsonProperty("toRoute")
     private String toRoute;
-    @JsonProperty("startDate")
-    private String startDate;
+    @JsonProperty("startDateTime")
+    private Long startDateTime;
     @JsonProperty("isActive")
     private Boolean isActive;
     @JsonProperty("isDriver")
@@ -66,12 +66,12 @@ public class RouteDTO {
         this.toRoute = toRoute;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public Long getStartDateTime() {
+        return startDateTime;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStartDateTime(Long startDateTime) {
+        this.startDateTime = startDateTime;
     }
 
     public Boolean getActive() {

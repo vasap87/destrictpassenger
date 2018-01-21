@@ -78,7 +78,7 @@ definitions:
       toRoute:
         type: string
         description: To.
-      startDate:
+      startDateTime:
         type: string
         description: start date.
       isActide:
@@ -88,7 +88,7 @@ definitions:
       - userUuid
       - fromRoute
       - toRoute
-      - startDate
+      - startDateTime
       - isActide
 
   ErrorModel:
