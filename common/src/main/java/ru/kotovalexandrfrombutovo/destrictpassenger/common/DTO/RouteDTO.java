@@ -10,8 +10,8 @@ public class RouteDTO {
 
     @JsonProperty("id")
     private Long id;
-    @JsonProperty("userUuid")
-    private String userUuid;
+    @JsonProperty("user")
+    private UserInfoDTO user;
     @JsonProperty("fromRoute")
     private String fromRoute;
     @JsonProperty("toRoute")
@@ -42,12 +42,12 @@ public class RouteDTO {
         this.id = id;
     }
 
-    public String getUserUuid() {
-        return userUuid;
+    public UserInfoDTO getUser() {
+        return user;
     }
 
-    public void setUserUuid(String userUuid) {
-        this.userUuid = userUuid;
+    public void setUser(UserInfoDTO user) {
+        this.user = user;
     }
 
     public String getFromRoute() {

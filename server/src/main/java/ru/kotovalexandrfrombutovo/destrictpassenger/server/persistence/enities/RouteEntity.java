@@ -1,9 +1,6 @@
 package ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.enities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -17,7 +14,8 @@ public class RouteEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String userUuid;
+    @ManyToOne(targetEntity = UserInfoEntity.class)
+    private UserInfoEntity user;
     private String fromRoute;
     private String toRoute;
     private Long startDateTime;
@@ -27,12 +25,12 @@ public class RouteEntity implements Serializable {
     public RouteEntity() {
     }
 
-    public String getUserUuid() {
-        return userUuid;
+    public UserInfoEntity getUser() {
+        return user;
     }
 
-    public void setUserUuid(String userUuid) {
-        this.userUuid = userUuid;
+    public void setUser(UserInfoEntity user) {
+        this.user = user;
     }
 
     public String getFromRoute() {

@@ -11,8 +11,11 @@ import org.springframework.data.repository.core.support.RepositoryFactorySupport
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.repositories.RouteRepository;
+import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.repositories.UserInfoRepository;
 import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.services.IRoutePersistenceService;
+import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.services.IUserInfoPersistenceService;
 import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.services.RoutePersistenceServiceImpl;
+import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.services.UserInfoPersistenceServiceImpl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -38,6 +41,15 @@ public class JpaConfiguration {
         return repositoryFactorySupport().getRepository(RouteRepository.class);
     }
 
+    @Bean
+    public IUserInfoPersistenceService userInfoPersistenceService(){
+        return new UserInfoPersistenceServiceImpl();
+    }
+
+    @Bean
+    public UserInfoRepository userInfoRepository() throws SQLException {
+        return repositoryFactorySupport().getRepository(UserInfoRepository.class);
+    }
 
     @Bean
     public DataSource dataSource(){

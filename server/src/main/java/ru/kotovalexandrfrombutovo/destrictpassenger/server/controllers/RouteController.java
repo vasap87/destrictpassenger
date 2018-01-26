@@ -27,6 +27,13 @@ public class RouteController {
         return new ResponseEntity<Collection<RouteDTO>>(routeDTOCollection, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/mine", method = RequestMethod.GET, produces = "application/json", consumes = "application/json")
+    @ResponseBody
+    public ResponseEntity<Collection<RouteDTO>> listMineRoute(@RequestBody String userUuid){
+        Collection<RouteDTO> routeDTOCollection = routePersistenceService.getListRouteByUserUuid(userUuid);
+        return new ResponseEntity<Collection<RouteDTO>>(routeDTOCollection, HttpStatus.OK);
+    }
+
     @RequestMapping(method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity<RouteDTO> saveRoute(@RequestBody RouteDTO routeDTO){
         RouteDTO responseRoute = routePersistenceService.saveRoute(routeDTO);

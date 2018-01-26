@@ -12,9 +12,9 @@ import java.util.List;
  */
 @Transactional
 public interface RouteRepository extends CrudRepository<RouteEntity, Long> {
-    @Query(value = "select r from RouteEntity r where r.isActive = true")
+    @Query(nativeQuery = true, value = "select r.* from RouteEntity r where r.isActive = true and (r.startDateTime/1000 - EXTRACT(EPOCH FROM now())/60 > -5 )" )
     List<RouteEntity> getActiveRoutes();
 
-    @Query(value = "select r from RouteEntity r where r.userUuid = ?1")
+    @Query(value = "select r from RouteEntity r where r.user = (select u from UserInfoEntity u where u.uuid = ?1)")
     List<RouteEntity> getRouteByUser(String userUuid);
 }
