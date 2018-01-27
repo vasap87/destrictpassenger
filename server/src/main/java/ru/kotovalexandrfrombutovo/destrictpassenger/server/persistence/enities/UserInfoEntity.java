@@ -12,9 +12,9 @@ import java.io.Serializable;
 @Entity
 public class UserInfoEntity implements Serializable {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Id
     private String uuid;
     private String phone;
     private String name;

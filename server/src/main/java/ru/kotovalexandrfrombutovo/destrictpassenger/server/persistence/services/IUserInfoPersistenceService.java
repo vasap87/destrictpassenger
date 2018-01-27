@@ -7,5 +7,5 @@ import ru.kotovalexandrfrombutovo.destrictpassenger.common.DTO.UserInfoDTO;
  */
 public interface IUserInfoPersistenceService {
     UserInfoDTO saveUserInfo(UserInfoDTO userInfoEntity);
-    UserInfoDTO getUserByPhone(String userUuid);
+    UserInfoDTO getUserByPhone(String userPhone);
 }

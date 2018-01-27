@@ -14,7 +14,7 @@ public class RouteEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(targetEntity = UserInfoEntity.class)
+    @ManyToOne(cascade = CascadeType.ALL)
     private UserInfoEntity user;
     private String fromRoute;
     private String toRoute;
