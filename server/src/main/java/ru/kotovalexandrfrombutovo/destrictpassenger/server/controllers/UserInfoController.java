@@ -32,8 +32,8 @@ public class UserInfoController {
 
     @RequestMapping("/isactive")
     @ResponseBody
-    public ResponseEntity<UserInfoDTO> getUserByUuid(@RequestBody String uuid){
-        UserInfoDTO userInfoDTO = userInfoPersistenceService.getUserByPhone(uuid);
+    public ResponseEntity<UserInfoDTO> getUserByUuid(@RequestBody String phone){
+        UserInfoDTO userInfoDTO = userInfoPersistenceService.getUserByPhone(phone);
         if(userInfoDTO!=null){
             return new ResponseEntity<UserInfoDTO>(userInfoDTO, HttpStatus.OK);
         }

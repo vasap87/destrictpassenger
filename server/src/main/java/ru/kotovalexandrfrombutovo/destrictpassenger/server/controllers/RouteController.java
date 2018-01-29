@@ -20,21 +20,22 @@ public class RouteController {
     @Autowired
     private IRoutePersistenceService routePersistenceService;
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Collection<RouteDTO>> listRoute(){
         Collection<RouteDTO> routeDTOCollection = routePersistenceService.getListActiveRoute();
         return new ResponseEntity<Collection<RouteDTO>>(routeDTOCollection, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/mine", method = RequestMethod.GET, produces = "application/json", consumes = "application/json")
+    @RequestMapping(value = "/mine", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Collection<RouteDTO>> listMineRoute(@RequestBody String userUuid){
         Collection<RouteDTO> routeDTOCollection = routePersistenceService.getListRouteByUserUuid(userUuid);
         return new ResponseEntity<Collection<RouteDTO>>(routeDTOCollection, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
     public ResponseEntity<RouteDTO> saveRoute(@RequestBody RouteDTO routeDTO){
         RouteDTO responseRoute = routePersistenceService.saveRoute(routeDTO);
         return new ResponseEntity<RouteDTO>(responseRoute, HttpStatus.OK);

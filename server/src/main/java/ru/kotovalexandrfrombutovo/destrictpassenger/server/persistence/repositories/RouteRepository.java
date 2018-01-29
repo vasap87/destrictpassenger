@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Transactional
 public interface RouteRepository extends CrudRepository<RouteEntity, Long> {
-    @Query(nativeQuery = true, value = "select r.* from RouteEntity r where r.isActive = true and (r.startDateTime/1000 - EXTRACT(EPOCH FROM now())/60 > -5 )" )
+    @Query(nativeQuery = true, value = "select r.* from RouteEntity r where r.isActive = true and ((r.startDateTime - CAST((EXTRACT(EPOCH FROM now())*1000) as bigint))/60000) > -5" )
     List<RouteEntity> getActiveRoutes();
 
     @Query(value = "select r from RouteEntity r where r.user = (select u from UserInfoEntity u where u.uuid = ?1)")
