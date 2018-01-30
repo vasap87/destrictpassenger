@@ -23,11 +23,7 @@ public class UserInfoController {
     @RequestMapping("/add")
     @ResponseBody
     public ResponseEntity<UserInfoDTO> addUser(@RequestBody UserInfoDTO userInfoDTO){
-        if(userInfoDTO.getId()==null){
-            return new ResponseEntity<UserInfoDTO>(userInfoPersistenceService.saveUserInfo(userInfoDTO), HttpStatus.OK);
-        }else{
-            return new ResponseEntity<UserInfoDTO>(HttpStatus.BAD_REQUEST);
-        }
+        return new ResponseEntity<UserInfoDTO>(userInfoPersistenceService.saveUserInfo(userInfoDTO), HttpStatus.OK);
     }
 
     @RequestMapping("/isactive")
