@@ -1,6 +1,5 @@
 package ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.enities;
 
-import ru.kotovalexandrfrombutovo.destrictpassenger.common.DTO.LocationENUM;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -26,14 +25,13 @@ public class RouteEntity implements Serializable {
     private Boolean isDriver;
 
     @NotNull
-    @Enumerated(EnumType.ORDINAL)
-    private LocationENUM location;
+    private Integer location;
 
-    public LocationENUM getLocation() {
+    public Integer getLocation() {
         return location;
     }
 
-    public void setLocation(LocationENUM location) {
+    public void setLocation(Integer location) {
         this.location = location;
     }
 

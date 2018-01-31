@@ -13,8 +13,8 @@ import java.util.List;
  */
 @Transactional
 public interface RouteRepository extends CrudRepository<RouteEntity, Long> {
-    @Query(nativeQuery = true, value = "select r.* from RouteEntity r where r.isActive = true and r.location in :locations and ((r.startDateTime - CAST((EXTRACT(EPOCH FROM now())*1000) as bigint))/60000) > - :duration" )
-    List<RouteEntity> getActiveRoutes(@Param("duration") Integer diration, @Param("locations") List<Integer> locationIds);
+    @Query(nativeQuery = true, value = "select r.* from RouteEntity r where r.isActive = true and r.location = :location and ((r.startDateTime - CAST((EXTRACT(EPOCH FROM now())*1000) as bigint))/60000) > - :duration" )
+    List<RouteEntity> getActiveRoutes(@Param("duration") Integer duration, @Param("location") Integer location);
 
     @Query(value = "select r from RouteEntity r where r.user = (select u from UserInfoEntity u where u.uuid = ?1)")
     List<RouteEntity> getRouteByUser(String userUuid);

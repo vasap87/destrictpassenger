@@ -8,9 +8,7 @@ import ru.kotovalexandrfrombutovo.destrictpassenger.common.DTO.RouteDTO;
 import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.enities.UserInfoEntity;
 import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.services.IRoutePersistenceService;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by alexkotov on 29.11.17.
@@ -25,9 +23,9 @@ public class RouteController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Collection<RouteDTO>> listRoute(@RequestHeader(value = "duration") Integer duration,
-                                                          @RequestHeader(value = "locations") List<Integer> locations){
-        Collection<RouteDTO> routeDTOCollection = routePersistenceService.getListActiveRoute(duration, locations);
+    public ResponseEntity<Collection<RouteDTO>> listRoute(@RequestHeader(value = "duration") String duration,
+                                                          @RequestHeader(value = "location") String location){
+        Collection<RouteDTO> routeDTOCollection = routePersistenceService.getListActiveRoute(Integer.parseInt(duration), Integer.parseInt(location));
         return new ResponseEntity<Collection<RouteDTO>>(routeDTOCollection, HttpStatus.OK);
     }
 

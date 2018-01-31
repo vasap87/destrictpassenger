@@ -1,6 +1,5 @@
 package ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.services;
 
-import ru.kotovalexandrfrombutovo.destrictpassenger.common.DTO.LocationENUM;
 import ru.kotovalexandrfrombutovo.destrictpassenger.common.DTO.RouteDTO;
 import ru.kotovalexandrfrombutovo.destrictpassenger.common.DTO.UserInfoDTO;
 
@@ -26,7 +25,7 @@ public class TestHelper {
         routeDTO.setUser(userInfoDTO);
         routeDTO.setFromRoute("froooom");
         routeDTO.setToRoute("toooo");
-        routeDTO.setLocation(LocationENUM.BUTOVSKIEALLEI);
+        routeDTO.setLocation(0);
         routeDTO.setStartDateTime(System.currentTimeMillis()+1000*60*5);
         return routeDTO;
     }

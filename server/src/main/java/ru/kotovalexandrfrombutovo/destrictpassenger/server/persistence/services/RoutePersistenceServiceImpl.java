@@ -41,9 +41,9 @@ public class RoutePersistenceServiceImpl implements IRoutePersistenceService {
         return result;
     }
 
-    public Set<RouteDTO> getListActiveRoute(int duration, List<Integer> locations) {
+    public Set<RouteDTO> getListActiveRoute(int duration, int location) {
         Set<RouteDTO> result = new HashSet<>();
-        repository.getActiveRoutes(duration, locations).forEach(route -> result.add(transformer.routeEntityToDto(route)));
+        repository.getActiveRoutes(duration, location).forEach(route -> result.add(transformer.routeEntityToDto(route)));
         return result;
     }
 }
