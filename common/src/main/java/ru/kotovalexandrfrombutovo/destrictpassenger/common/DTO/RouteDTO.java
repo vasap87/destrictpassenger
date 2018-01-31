@@ -23,6 +23,16 @@ public class RouteDTO {
     @JsonProperty("isDriver")
     private Boolean isDriver;
 
+    private LocationENUM location;
+
+    public LocationENUM getLocation() {
+        return location;
+    }
+
+    public void setLocation(LocationENUM location) {
+        this.location = location;
+    }
+
     public Boolean getDriver() {
         return isDriver;
     }

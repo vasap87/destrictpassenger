@@ -5,9 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.kotovalexandrfrombutovo.destrictpassenger.common.DTO.RouteDTO;
+import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.enities.UserInfoEntity;
 import ru.kotovalexandrfrombutovo.destrictpassenger.server.persistence.services.IRoutePersistenceService;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by alexkotov on 29.11.17.
@@ -22,15 +25,16 @@ public class RouteController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Collection<RouteDTO>> listRoute(){
-        Collection<RouteDTO> routeDTOCollection = routePersistenceService.getListActiveRoute();
+    public ResponseEntity<Collection<RouteDTO>> listRoute(@RequestHeader(value = "duration") Integer duration,
+                                                          @RequestHeader(value = "locations") List<Integer> locations){
+        Collection<RouteDTO> routeDTOCollection = routePersistenceService.getListActiveRoute(duration, locations);
         return new ResponseEntity<Collection<RouteDTO>>(routeDTOCollection, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/mine", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Collection<RouteDTO>> listMineRoute(@RequestBody String userUuid){
-        Collection<RouteDTO> routeDTOCollection = routePersistenceService.getListRouteByUserUuid(userUuid);
+    public ResponseEntity<Collection<RouteDTO>> listMineRoute(@RequestBody UserInfoEntity userInfo){
+        Collection<RouteDTO> routeDTOCollection = routePersistenceService.getListRouteByUserUuid(userInfo.getUuid());
         return new ResponseEntity<Collection<RouteDTO>>(routeDTOCollection, HttpStatus.OK);
     }
 

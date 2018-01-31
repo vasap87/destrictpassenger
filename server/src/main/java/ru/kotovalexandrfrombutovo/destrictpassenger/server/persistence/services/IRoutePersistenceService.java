@@ -13,5 +13,5 @@ public interface IRoutePersistenceService {
     RouteDTO saveRoute(RouteDTO routeDTO);
     void deleteRoute(RouteDTO routeDTO);
     Set<RouteDTO> getListRouteByUserUuid(String userUuid);
-    Set<RouteDTO> getListActiveRoute();
+    Set<RouteDTO> getListActiveRoute(int duration, List<Integer> locations);
 }
